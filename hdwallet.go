@@ -280,7 +280,7 @@ func (w *Wallet) SignTx(account accounts.Account, tx *types.Transaction, chainID
 		return nil, err
 	}
 
-	signer := types.LatestSignerForChainID(chainID)
+	signer := types.NewLondonSigner(chainID)
 
   // Sign the transaction and verify the sender to avoid hardware fault surprises
 	signedTx, err := types.SignTx(tx, signer, privateKey)
